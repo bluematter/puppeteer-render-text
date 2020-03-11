@@ -56,7 +56,7 @@ module.exports = async (opts) => {
   ow(text, ow.string.label('text'))
   ow(style, ow.object.plain.label('style'))
 
-  const { fontFamily = '' } = style
+  const { fontFamily = '', fontWeight = '' } = style
 
   if (loadGoogleFont && !fontFamily) {
     throw new Error('valid style.fontFamily required when loading google font')
@@ -72,7 +72,7 @@ module.exports = async (opts) => {
     ? observer : (
       loadGoogleFont ? `
       ${observer}
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${fonts.map((font) => font.replace(/ /g, '+')).join('|')}">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${fonts.map((font) => `${font}:${fontWeight}`.replace(/ /g, '+')).join('|')}">
     ` : ''
     )
 
