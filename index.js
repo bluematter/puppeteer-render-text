@@ -147,7 +147,7 @@ ${inject.body || ''}
   page.on('error', console.error)
 
   await page.setViewport({
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
     width: width || 640,
     height: height || 480
   })
